@@ -76,7 +76,16 @@ const addLink = (link) => {
         })
       })
       .then(function (response) {
-        dispatch(addLinkSuccessAction(response.data.data));
+        console.log("My response", response);
+        let responseData = response.data.data;
+        dispatch(addLinkSuccessAction({
+          title: responseData.title,
+          url: responseData.url,
+          topic_id: responseData.topicId,
+          image: responseData.image,
+          linkTitle: responseData.title,
+          description: responseData.description
+        }));
       })
       .catch(function (error) {
         console.log("Errors", error.response);

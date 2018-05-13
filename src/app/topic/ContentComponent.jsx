@@ -74,7 +74,7 @@ class ContentComponent extends React.Component {
                                                 {link.title}
                                                 <i className="fas fa-trash-alt text-danger pl-3 pointer" onClick={() => this.onDeleteLink(link)}></i>
                                             </p>
-                                            <a href={link.url} className="simple-link">
+                                            <a href={link.url} target="_blank" className="simple-link">
                                                 <div className="link-preview">
                                                     <div 
                                                         className="link-image" 
