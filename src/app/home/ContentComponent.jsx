@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import shortid from 'shortid';
 import ReactLoading from 'react-loading';
-import MicrolinkCard from 'react-microlink'
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -66,10 +65,19 @@ class ContentComponent extends React.Component {
                                     {link.title}
                                     <i className="fas fa-trash-alt text-danger pl-3 pointer" onClick={() => this.onDeleteLink(link)}></i>
                                 </p>
-                                <MicrolinkCard 
-                                    url={link.url}
-                                    style={{position: 'relative', width: '100%', maxWidth: '100%'}}
-                                />
+                                <a href={link.url} className="simple-link">
+                                    <div className="link-preview">
+                                        <div 
+                                            className="link-image" 
+                                            style={{backgroundImage: `url(${link.image})`}}
+                                        >
+                                        </div>
+                                        <div className="link-details">
+                                            <h5>{link.linkTitle}</h5>
+                                            <p className="m-0">{link.description}</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </li>
                         )
                     })

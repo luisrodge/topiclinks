@@ -77,3 +77,31 @@ body {
     width: 70px;
     margin-bottom: 30px;
 }
+
+.link-preview {
+    display: flex;
+    border: 1px solid#34495e;
+    .link-image {
+        background: #e1e8ed no-repeat center;
+        background-size: cover;
+        flex: 0 0 125px;
+    }
+    .link-details {
+        padding: 10px 15px;
+        h5 {
+            color: #34495e;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        P {
+            font-size: 14px;
+        }
+    }
+    &:hover {
+        border-color: #2ecc71;
+    }
+}
+
+.simple-link {
+    color: inherit;
+}

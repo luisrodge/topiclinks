@@ -44,7 +44,10 @@ const getLinks = (topicId) => {
             const childData = {
               id: child.id,
               title: child.title,
-              url: child.url
+              url: child.url,
+              linkTitle: child.link_title,
+              description: child.description,
+              image: child.image
             };
             data.push(childData);
           });
@@ -59,13 +62,20 @@ const getLinks = (topicId) => {
 const addLink = (link) => {
   return dispatch => {
     dispatch(addLinkAction());
-    axios.post(`${API_ROOT}/links`, {
-        title: link.title,
-        url: link.url,
-        topic_id: link.topicId
+    axios.get(`http://api.linkpreview.net/?key=5af869ac16b24455a9ce9e0c8e8a0c7745eecd6a64be4&q=${link.url}`)
+      .then(function (response) {
+        console.log("Preview", response);
+        let responseData = response.data;
+        return axios.post(`${API_ROOT}/links`, {
+          title: link.title,
+          url: link.url,
+          topic_id: link.topicId,
+          image: responseData.image,
+          link_title: responseData.title,
+          description: responseData.description
+        })
       })
       .then(function (response) {
-        console.log(response.data.data);
         dispatch(addLinkSuccessAction(response.data.data));
       })
       .catch(function (error) {

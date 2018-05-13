@@ -20,7 +20,10 @@ const getLatestLinks = () => {
             const childData = {
               id: child.id,
               title: child.title,
-              url: child.url
+              url: child.url,
+              linkTitle: child.link_title,
+              description: child.description,
+              image: child.image
             };
             data.push(childData);
           });
