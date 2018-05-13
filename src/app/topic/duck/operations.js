@@ -62,7 +62,7 @@ const getLinks = (topicId) => {
 const addLink = (link) => {
   return dispatch => {
     dispatch(addLinkAction());
-    axios.get(`http://api.linkpreview.net/?key=5af869ac16b24455a9ce9e0c8e8a0c7745eecd6a64be4&q=${link.url}`)
+    axios.get(`https://api.linkpreview.net/?key=5af869ac16b24455a9ce9e0c8e8a0c7745eecd6a64be4&q=${link.url}`)
       .then(function (response) {
         console.log("Preview", response);
         let responseData = response.data;
